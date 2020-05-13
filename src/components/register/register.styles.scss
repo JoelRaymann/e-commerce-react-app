@@ -1,0 +1,10 @@
+.register-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 380px;
+  width: 40%;
+
+  .title {
+    margin: 10px 0;
+  }
+}
