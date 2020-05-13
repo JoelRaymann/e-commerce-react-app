@@ -1,0 +1,16 @@
+.sign-in {
+  min-width: 380px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    margin: 10px 0;
+  }
+
+  .button-placement {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
