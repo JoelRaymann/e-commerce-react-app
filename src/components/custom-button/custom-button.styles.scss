@@ -15,6 +15,8 @@
   border-radius: 4px;
   cursor: pointer;
   transition: 500ms ease all;
+  display: flex;
+  justify-content: center;
 
   &:hover {
     background-color: white;
@@ -32,6 +34,18 @@
       color: #357ae8;
       border: 1px solid #357ae8;
       transform: scale(1.025);
+    }
+  }
+
+  &.inverted-button {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+
+    &:hover {
+      background-color: black;
+      color: white;
+      border: none;
     }
   }
 }
