@@ -1,3 +1,6 @@
+// Import action types
+import { UserActionTypes } from "./user.types";
+
 const INITIAL_STATE = {
   currentUser: null,
 };
@@ -5,7 +8,7 @@ const INITIAL_STATE = {
 const userReducer = (state = INITIAL_STATE, action) => {
   // Can also use if-else-if statements if needed
   switch (action.type) {
-    case "SET_CURRENT_USER":
+    case UserActionTypes.SET_CURRENT_USER:
       // modify only the current user. spread all other state values as usual
       return {
         ...state,

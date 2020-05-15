@@ -10,7 +10,7 @@ import LoginRegister from "./pages/login-register/login-register.component";
 import Header from "./components/header/header.component";
 
 // import routing functionals
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 // importing firebase utils
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
@@ -20,15 +20,6 @@ import { connect } from "react-redux";
 
 // import redux actions
 import { setCurrentUser } from "./redux/user/user.actions";
-
-// Testing Error Routed Page
-const ErrorPage = () => {
-  return (
-    <div className="error-page">
-      <h1 className="h1">Sorry, you stumbled in the wrong place</h1>
-    </div>
-  );
-};
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -63,16 +54,39 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/home" component={HomePage} />
           <Route exact path="/shop" component={ShopPage} />
-          <Route exact path="/login" component={LoginRegister} />
-          <Route path="/" component={ErrorPage} />
+          <Route
+            exact
+            path="/login"
+            render={() =>
+              this.props.currentUser ? (
+                <Redirect to="/home" />
+              ) : (
+                <LoginRegister />
+              )
+            }
+          />
+          <Route
+            path="/"
+            render={() =>
+              this.props.currentUser ? (
+                <Redirect to="/home" />
+              ) : (
+                <LoginRegister />
+              )
+            }
+          />
         </Switch>
       </div>
     );
   }
 }
 
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
