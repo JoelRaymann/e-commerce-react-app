@@ -1,6 +1,6 @@
 /* Used as starting data for Directory */
 
-const SECTIONS_DATA = [
+export const SECTIONS_DATA = [
   {
     title: "hats",
     // imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',

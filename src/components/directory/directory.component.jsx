@@ -4,33 +4,23 @@ import "./directory.styles.scss";
 // import external components
 import MenuItem from "../menu-item/menu-items";
 
-// Import Test Data Assets!!
-import SECTIONS_DATA from "../../data/sections.data";
+// import redux and utils
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectDirectorItems } from "../../redux/directory/directory.selectors";
 
-/**
- * A Directory React Component that enables displaying webpage menu-items
- * in a friendly and ez manner.
- *
- * @extends React.Component
- */
-class Directory extends React.Component {
-  constructor(props) {
-    super(props);
+const Directory = ({ directoryItems }) => {
+  return (
+    <div className="directory-menu">
+      {directoryItems.map(({ id, ...otherSectionProps }) => (
+        <MenuItem key={id} {...otherSectionProps} />
+      ))}
+    </div>
+  );
+};
 
-    this.state = {
-      sections: SECTIONS_DATA,
-    };
-  }
+const mapStateToProps = createStructuredSelector({
+  directoryItems: selectDirectorItems,
+});
 
-  render() {
-    return (
-      <div className="directory-menu">
-        {this.state.sections.map(({ id, ...otherSectionProps }) => (
-          <MenuItem key={id} {...otherSectionProps} />
-        ))}
-      </div>
-    );
-  }
-}
-
-export default Directory;
+export default connect(mapStateToProps)(Directory);
