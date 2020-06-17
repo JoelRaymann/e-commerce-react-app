@@ -6,6 +6,12 @@
   .title {
     font-size: 28px;
     margin-bottom: 25px;
+
+    .link-title {
+      cursor: pointer;
+      text-decoration: none;
+      color: black;
+    }
   }
 
   .preview {
