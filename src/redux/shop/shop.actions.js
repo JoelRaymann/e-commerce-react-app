@@ -13,6 +13,7 @@ import {
  * @returns {Object} The action object for the redux shop reducer
  */
 export const fetchShopItemsStart = () => {
+  console.log(`${fetchShopItemsStart.name} is fired`);
   return {
     type: ShopActionTypes.FETCH_SHOP_ITEMS_START,
   };
