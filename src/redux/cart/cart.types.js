@@ -1,8 +1,9 @@
-export const CartActionTypes = {
+const CartActionTypes = {
   TOGGLE_CART_VISIBILITY: "TOGGLE_CART_VISIBILITY",
   ADD_CART_ITEM: "ADD_CART_ITEM",
   REMOVE_CART_ITEM: "REMOVE_CART_ITEM",
   CLEAR_ITEM_FROM_CART: "CLEAR_ITEM_FROM_CART",
+  CLEAR_CART: "CLEAR_CART",
 };
 
 export default CartActionTypes;
